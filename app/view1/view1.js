@@ -11,14 +11,22 @@ angular.module('myApp.view1', ['ngRoute'])
 .controller('LifeCntl', function($scope, $http) {
 
     $scope.newGame = function () {
+    	$scope.history = [];
         $scope.board = init($scope.height, $scope.width);
     };
     
     $scope.next = function () {
+    	$scope.history.push($scope.board);
         $scope.board = computeNext($scope.board);
+    };
+
+    $scope.step = function (index) {
+        $scope.board = $scope.history[index];
+        $scope.history = $scope.history.slice(0, index);
     };
     
     $scope.toggle = function (row, cell) {  
+    	$scope.history = [];
         $scope.board[row][cell] = !$scope.board[row][cell];
     };
 

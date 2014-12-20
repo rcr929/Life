@@ -1,5 +1,12 @@
 /* app css stylesheet */
 
+.md-4 {
+  width: 33%;
+}
+.md-8 {
+  width: 67%;
+}
+
 h1 {
     font-size: 1.3em;
     color: #844;

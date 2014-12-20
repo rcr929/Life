@@ -1,4 +1,4 @@
-<div>
+<div class="md-8">
         
 	<h1>Rex's Game of Life</h1>
 	Height: <input type="text" ng-model="height" />
@@ -15,4 +15,11 @@
 	    </tr>
 	</table>
   
+</div>
+<div class="md-4">
+	<h3>Revert to Old Turn</h3>
+	<h3>Turn: {{history.length}}</h3>
+	<ul>
+		<li ng-repeat="step in history" ng-click="$parent.step($index)">Turn {{$index}}</li>
+	</ul>
 </div>
