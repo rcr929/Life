@@ -1,0 +1,15 @@
+/* app css stylesheet */
+
+h1 {
+    font-size: 1.3em;
+    color: #844;
+    font-style: bold;    
+}
+table#board td {
+    width: 1.5em;
+    height: 1.5em;
+    text-align: center;
+    vertical-align: middle;
+    border: solid 1px #ddd;
+}
+
