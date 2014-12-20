@@ -1,0 +1,1 @@
+This project was made as part of an interview process.  The application used the angular-seed project as a baseline and built the Game of Life functionality on top of it.  Anyone who finds this is welcome to use any of the code included.
