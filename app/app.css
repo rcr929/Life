@@ -13,11 +13,15 @@
   float: left;
 }
 .game h1 {
-  color: #844;   
+  color: #844;
+  margin-bottom: 1em;   
 }
 
 .settings {
   margin-top: .2em;
+}
+.settings input {
+  margin-right: 1em;
 }
 button {
   padding: 6px 12px;

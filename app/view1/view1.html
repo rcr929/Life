@@ -2,9 +2,11 @@
 	<h1>Rex's Game of Life</h1>
 	<div class="md-8">
 		<div class="settings">
-			<div class="spec">Height: </div><input type="text" ng-model="height" /><br>
-			<div class="spec">Width: &nbsp</div><input type="text" ng-model="width" /><br>
-			<button ng-click="next()" class="btn-primary">Next</button>
+			<div class="spec">Height: </div><input type="number" min="5" max="30" ng-model="height" />
+			<div class="spec">Width: </div><input type="number" min="5" max="30" ng-model="width" /><br>
+			<div class="spec">Steps per Second: </div><input type="number" min="1" max="50" ng-model="stepsPerSecond" /><br>
+			<button ng-click="runGame()" class="btn-primary">{{runState}}</button>
+			<button ng-click="next()" class="btn-primary">Step</button>
 			<button ng-click="newGame()" class="btn-success">New</button>
 		</div>
 		<table id="board">
@@ -19,7 +21,7 @@
 	</div>
 	<div class="md-4 oldTurns">
 		<h3>Revert to Previous Turn</h3>
-		<span><strong>Turn: {{history.length}}</strong></span>
+		<span><strong>Number of Turns: {{history.length}}</strong></span>
 		<ul class="steps">
 			<li ng-repeat="step in history" ng-click="$parent.step($index)">Turn {{$index}}</li>
 		</ul>

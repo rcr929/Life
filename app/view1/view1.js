@@ -8,13 +8,27 @@ angular.module('myApp.view1', ['ngRoute'])
     controller: 'LifeCntl'
   });
 }])
-.controller('LifeCntl', function($scope, $http) {
+.controller('LifeCntl', ['$scope', '$http', '$interval', function($scope, $http, $interval) {
 
     $scope.newGame = function () {
     	$scope.history = [];
         $scope.board = init($scope.height, $scope.width);
     };
-    
+
+    var stop;
+    $scope.runGame = function () {
+    	if ($scope.runState == "Run") {
+    		$scope.runState = "Pause"
+	    	stop = $interval(function() {
+	    		$scope.next();
+	    	}, 1000/$scope.stepsPerSecond);
+	    }
+	    else {
+	    	$scope.runState = "Run";
+	    	$interval.cancel(stop);
+	    }
+    };
+
     $scope.next = function () {
     	$scope.history.push($scope.board);
         $scope.board = computeNext($scope.board);
@@ -39,9 +53,11 @@ angular.module('myApp.view1', ['ngRoute'])
         }
         return "";
     };
-    
+
     $scope.height = 10;
     $scope.width = 20;
+    $scope.stepsPerSecond = 5;
+    $scope.runState = "Run";
     $scope.newGame();
     
     function init(height, width) {
@@ -101,4 +117,4 @@ angular.module('myApp.view1', ['ngRoute'])
                 cell >= 0  && cell < board[row].length &&
                 board[row][cell]);
     }
-});
+}]);
