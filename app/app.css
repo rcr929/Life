@@ -1,22 +1,82 @@
 /* app css stylesheet */
 
+.game {
+  margin-top: 1em;
+  margin-left: 7em;
+}
 .md-4 {
-  width: 33%;
+  margin-left: 2em;
+  float: left;
 }
 .md-8 {
-  width: 67%;
+  width: 66%;
+  float: left;
+}
+.game h1 {
+  color: #844;   
 }
 
-h1 {
-    font-size: 1.3em;
-    color: #844;
-    font-style: bold;    
+.settings {
+  margin-top: .2em;
+}
+button {
+  padding: 6px 12px;
+}
+.btn-success {
+  color: #fff;
+  background-color: #5cb85c;
+  border-color: #4cae4c;
+}
+.btn-primary {
+  color: #fff;
+  background-color: #337ab7;
+  border-color: #2e6da4;
+}
+
+.spec {
+  width: 60px;
+  display: inline;
+}
+input {
+  margin-bottom: .3em;
+  border-radius: .4em;
+}
+button {
+  border-radius: .4em;
+}
+
+table#board {
+  margin-top: .6em;
 }
 table#board td {
-    width: 1.5em;
-    height: 1.5em;
-    text-align: center;
-    vertical-align: middle;
-    border: solid 1px #ddd;
+  width: 1.5em;
+  height: 1.5em;
+  text-align: center;
+  vertical-align: middle;
+  border: solid 1px #ddd;
+}
+table#board td.new {
+    background-color: #efe;
+}
+table#board td.die {
+    background-color: #fee;
 }
 
+.oldTurns {
+  padding: 0 1.5em;
+  border: solid 1px #ddd;
+  border-radius: .8em;
+  height: 35em;
+  
+}
+.oldTurns .steps {
+  overflow-y: scroll;
+  max-height: 27em;
+}
+.oldTurns ul {
+  margin-left: -1.5em;
+}
+.oldTurns li {
+  list-style-type: none;
+  cursor: pointer;
+}

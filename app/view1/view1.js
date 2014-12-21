@@ -30,8 +30,19 @@ angular.module('myApp.view1', ['ngRoute'])
         $scope.board[row][cell] = !$scope.board[row][cell];
     };
 
+    $scope.cellClass = function (row, cell) {
+        if (willDie($scope.board, row, cell)) {
+            return "die";
+        }
+        if (newCell($scope.board, row, cell)) {
+            return "new";
+        }
+        return "";
+    };
+    
     $scope.height = 10;
     $scope.width = 20;
+    $scope.newGame();
     
     function init(height, width) {
         var board = [];
