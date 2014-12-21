@@ -2,11 +2,12 @@
 	<h1>Rex's Game of Life</h1>
 	<div class="md-8">
 		<div class="settings">
-			<div class="spec">Height: </div><input type="number" min="5" max="30" ng-model="height" />
-			<div class="spec">Width: </div><input type="number" min="5" max="30" ng-model="width" /><br>
+
+			<div class="spec">Height: </div><input type="number" min="5" max="25" ng-model="height" />
+			<div class="spec">Width: </div><input type="number" min="5" max="25" ng-model="width" /><br>
 			<div class="spec">Steps per Second: </div><input type="number" min="1" max="50" ng-model="stepsPerSecond" /><br>
 			<button ng-click="runGame()" class="btn-primary">{{runState}}</button>
-			<button ng-click="next()" class="btn-primary">Step</button>
+			<button ng-click="step()" class="btn-primary">Step</button>
 			<button ng-click="newGame()" class="btn-success">New</button>
 		</div>
 		<table id="board">
@@ -17,13 +18,15 @@
 		        </td>
 		    </tr>
 		</table>
-	  
+	  	<p>This is a simulation of Conway's Game of Life. You can customize the size of the grid by adjusting the height and width (5x5 up to 25x25). The Play button will run the simulation, Step will run one turn, and New will create a new blank grid according to your specifications.  Clicking on a turn number on the right will revert the grid back to that turn. Enjoy!</p>
 	</div>
 	<div class="md-4 oldTurns">
-		<h3>Revert to Previous Turn</h3>
-		<span><strong>Number of Turns: {{history.length}}</strong></span>
+		<div class="historyInfo">
+			<h3>Revert to Previous Turn</h3>
+			<span><strong>Number of Turns: {{history.length}}</strong></span>
+		</div>
 		<ul class="steps">
-			<li ng-repeat="step in history" ng-click="$parent.step($index)">Turn {{$index}}</li>
+			<li ng-repeat="step in history" ng-click="$parent.revert($index)">- Turn {{$index}}</li>
 		</ul>
 	</div>
 </div>

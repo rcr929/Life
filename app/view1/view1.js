@@ -34,12 +34,28 @@ angular.module('myApp.view1', ['ngRoute'])
         $scope.board = computeNext($scope.board);
     };
 
-    $scope.step = function (index) {
+    $scope.step = function () {
+    	if ($scope.runState == "Pause") {
+    		$scope.runState = "Run";
+    		$interval.cancel(stop);
+    	}
+    	$scope.next();
+    };
+
+    $scope.revert = function (index) {
+    	if ($scope.runState == "Pause") {
+    		$scope.runState = "Run";
+    		$interval.cancel(stop);
+    	}
         $scope.board = $scope.history[index];
         $scope.history = $scope.history.slice(0, index);
     };
     
-    $scope.toggle = function (row, cell) {  
+    $scope.toggle = function (row, cell) {
+    	if ($scope.runState == "Pause") {
+    		$scope.runState = "Run";
+    		$interval.cancel(stop);
+    	}
     	$scope.history = [];
         $scope.board[row][cell] = !$scope.board[row][cell];
     };
@@ -74,12 +90,22 @@ angular.module('myApp.view1', ['ngRoute'])
     
     function computeNext(board) {
         var newBoard = [];
+        var totalAlive = 0;
         for (var r = 0 ; r < board.length ; r++) {
             var newRow = [];
             for (var c = 0 ; c < board[r].length ; c++) {
-                newRow.push(willLive(board, r, c) || newCell(board, r, c));
+            	var cell = (willLive(board, r, c) || newCell(board, r, c));
+                newRow.push(cell);
+
+                if (cell) {totalAlive++;}
             }
             newBoard.push(newRow); 
+        }
+        if (totalAlive == 0){
+        	if ($scope.runState == "Pause") {
+	    		$scope.runState = "Run";
+	    		$interval.cancel(stop);
+	    	}
         }
         return newBoard;
     }

@@ -1,20 +1,35 @@
 /* app css stylesheet */
 
+body{
+  background-color: #337ab7;
+}
+.foreground{
+  background-color: white;
+  margin: 0 4em;
+  padding: 0 3em;
+  border-radius: .5em;
+  overflow: auto;
+  min-height: 640px;
+}
+
 .game {
   margin-top: 1em;
-  margin-left: 7em;
 }
 .md-4 {
-  margin-left: 2em;
   float: left;
 }
 .md-8 {
   width: 66%;
+  min-width: 660px;
+  margin-right: 0.5em;
   float: left;
 }
 .game h1 {
   color: #844;
-  margin-bottom: 1em;   
+  padding-bottom: .5em;
+  margin-bottom: 1em; 
+  text-align: center;
+  border-bottom: solid 2px #337ab7;  
 }
 
 .settings {
@@ -66,19 +81,22 @@ table#board td.die {
     background-color: #fee;
 }
 
-.oldTurns {
-  padding: 0 1.5em;
-  border: solid 1px #ddd;
+.oldTurns { 
+  border: solid 2px #337ab7;
   border-radius: .8em;
   height: 35em;
-  
+  margin-bottom: 2em;
+}
+.oldTurns .historyInfo {
+  padding: .3em 1.5em;
+  border-bottom: solid 2px #337ab7;
+}
+.oldTurns h3 {
+  margin: .2em 0;
 }
 .oldTurns .steps {
   overflow-y: scroll;
   max-height: 27em;
-}
-.oldTurns ul {
-  margin-left: -1.5em;
 }
 .oldTurns li {
   list-style-type: none;
